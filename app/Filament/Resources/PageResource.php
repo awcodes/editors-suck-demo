@@ -4,7 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
+use App\Models\User;
+use App\Typist\Editors\MinimalEditor;
 use Awcodes\Typist\TypistEditor;
+use Filament\Forms\Components\Actions;
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
@@ -32,8 +36,17 @@ class PageResource extends Resource
                         }
                     }),
                 TextInput::make('slug'),
-                TypistEditor::make('content')
+                Actions::make([
+                    Action::make('test_update_content')
+                        ->action(fn(Set $set) => $set('content', typist('<p>updated content from $set</p>')->toJson()))
+                ]),
+                MinimalEditor::make('minimal')
+                    ->dehydrated(false)
                     ->columnSpanFull(),
+                TypistEditor::make('content')
+                    ->columnSpanFull()
+                    ->placeholder('Write something awesome...')
+                    ->mentions(User::all()->pluck('name')->toArray()),
             ]);
     }
 
@@ -48,6 +61,10 @@ class PageResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('preview')
+                    ->icon('heroicon-o-eye')
+                    ->color('gray')
+                    ->url(static fn ($record) => route('page.show', $record), shouldOpenInNewTab: true),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

@@ -19,7 +19,7 @@
             </div>
         </header>
         <main class="py-12 prose dark:prose-invert max-w-5xl mx-auto">
-            {!! typist($page->content)->toHtml() !!}
+            {!! typist($page->content)->mergeTagsMap(['name' => 'Adam', 'email' => 'awcodes1@gmail.com', 'phone' => '867-5309'])->toHtml() !!}
         </main>
 
         @livewireScripts

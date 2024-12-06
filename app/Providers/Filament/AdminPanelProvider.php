@@ -4,7 +4,11 @@ namespace App\Providers\Filament;
 
 use App\Filament\Auth\Login;
 use Awcodes\Curator\CuratorPlugin;
+use Awcodes\Typist\Facades\Typist;
+use Awcodes\Typist\Support\ToolbarGroup;
+use Awcodes\Typist\TypistEditor;
 use Exception;
+use Filament\FontProviders\LocalFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -37,6 +41,7 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->favicon(asset('favicon.svg'))
+            ->font('Inter', provider: LocalFontProvider::class)
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->plugins([
                 CuratorPlugin::make(),

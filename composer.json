@@ -8,6 +8,8 @@
         "php": "^8.2",
         "awcodes/dimmer": "^1.1",
         "awcodes/filament-curator": "^3.6",
+        "awcodes/preset-color-picker": "^0.2.0",
+        "awcodes/scribble": "*",
         "awcodes/typist": "*",
         "filament/filament": "^3.2",
         "laravel/framework": "^11.0",
@@ -28,6 +30,10 @@
         {
             "type": "path",
             "url": "../typist"
+        },
+        {
+            "type": "path",
+            "url": "../scribble"
         }
     ],
     "autoload": {

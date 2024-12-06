@@ -13,6 +13,9 @@ class EditPage extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('preview')
+                ->color('gray')
+                ->url(static fn ($record) => route('page.show', $record), shouldOpenInNewTab: true),
             Actions\DeleteAction::make(),
         ];
     }

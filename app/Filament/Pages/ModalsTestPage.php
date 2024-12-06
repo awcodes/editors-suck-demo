@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use Awcodes\Typist\Support\Faker;
 use Awcodes\Typist\TypistEditor;
 use Filament\Forms\Components\Actions;
+use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
@@ -33,12 +34,12 @@ class ModalsTestPage extends Page
                 ->details()
                 ->paragraphs()
                 ->asJson(),
-            'non_modal_content_two' => Faker::make()
-                ->heading()
-                ->paragraphs(2, true)
-                ->details()
-                ->paragraphs()
-                ->asJson()
+//            'non_modal_content_two' => Faker::make()
+//                ->heading()
+//                ->paragraphs(2, true)
+//                ->details()
+//                ->paragraphs()
+//                ->asJson()
         ]);
     }
 
@@ -60,7 +61,7 @@ class ModalsTestPage extends Page
                         'email',
                         'phone',
                     ]),
-                TypistEditor::make('non_modal_content_two'),
+//                TypistEditor::make('non_modal_content_two'),
             ]);
     }
 

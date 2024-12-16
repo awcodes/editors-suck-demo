@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
+            $table->boolean('full_page')->default(false);
             $table->longText('content')->nullable();
             $table->timestamps();
         });

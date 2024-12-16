@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Page;
 use Awcodes\Typist\Support\Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Page>
+ * @extends Factory<Page>
  */
 class PageFactory extends Factory
 {
@@ -20,22 +21,15 @@ class PageFactory extends Factory
     {
         $title = $this->faker->words(mt_rand(1, 3), true);
         $content = Faker::make()
-            ->block(values: [
-                'color' => $this->faker->randomElement([
-                    'info',
-                    'success',
-                    'warning',
-                    'danger',
-                ]),
-                'dismissible' => $this->faker->boolean(20),
-                'message' => $this->faker->sentence(),
-            ])
             ->heading()
-            ->paragraphs(3, true);
+            ->paragraphs(3, true)
+            ->heading(3)
+            ->paragraphs(2);
 
         return [
             'title' => $title,
             'slug' => Str::slug($title),
+            'full_page' => false,
             'content' => $content->asJson(),
         ];
     }

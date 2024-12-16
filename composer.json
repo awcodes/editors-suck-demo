@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "awcodes/typist-demo",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Demo and testing app for Typist Filament Plugin",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
@@ -9,7 +9,6 @@
         "awcodes/dimmer": "^1.1",
         "awcodes/filament-curator": "^3.6",
         "awcodes/palette": "^1.0",
-        "awcodes/scribble": "*",
         "awcodes/typist": "*",
         "filament/filament": "^3.2",
         "laravel/framework": "^11.0",
@@ -30,10 +29,6 @@
         {
             "type": "path",
             "url": "../typist"
-        },
-        {
-            "type": "path",
-            "url": "../scribble"
         }
     ],
     "autoload": {

@@ -43,6 +43,8 @@ class AdminPanelProvider extends PanelProvider
             ->favicon(asset('favicon.svg'))
             ->font('Inter', provider: LocalFontProvider::class)
             ->viteTheme('resources/css/filament/admin/theme.css')
+            ->sidebarWidth('16rem')
+            ->sidebarCollapsibleOnDesktop()
             ->plugins([
                 CuratorPlugin::make(),
             ])

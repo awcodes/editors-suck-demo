@@ -2,6 +2,7 @@
 
 namespace App\Typist\Actions;
 
+use Awcodes\Palette\Forms\Components\ColorPicker;
 use Awcodes\PresetColorPicker\PresetColorPicker;
 use Awcodes\Typist\TypistAction;
 use Awcodes\Typist\TypistEditor;
@@ -41,7 +42,9 @@ class Batman extends TypistAction
                     ])
                     ->inline()
                     ->inlineLabel(false),
-                PresetColorPicker::make('color')
+                ColorPicker::make('color')
+                    ->storeAsKey()
+                    ->columnSpanFull()
                     ->colors([
                         'black' => Color::hex('#000000'),
                         'yellow' => Color::Yellow,

@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
                     ToolbarGroup::make([
                         \App\Typist\Actions\Alert::make('Alert'),
                         \App\Typist\Actions\Batman::make('Batman'),
+                        \App\Typist\Actions\Section::make('Section'),
                     ])->label('Blocks'),
                 ])
                 ->suggestions([
@@ -37,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
                 ->sidebar([
                     \App\Typist\Actions\Alert::make('Alert'),
                     \App\Typist\Actions\Batman::make('Batman'),
+                    \App\Typist\Actions\Section::make('Section'),
                 ]);
         });
     }

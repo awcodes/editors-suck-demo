@@ -13,13 +13,13 @@
     </head>
     <body class="antialiased bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50">
         <header class="py-3 bg-slate-100 dark:bg-slate-950">
-            <div class="flex items-center justify-between gap-6 max-w-5xl mx-auto">
+            <div class="flex items-center justify-between gap-6 px-6">
                 <a href="{{ route('page.show', $page) }}">Home</a>
                 <x-dimmer::controls />
             </div>
         </header>
-        <main class="py-12 prose dark:prose-invert max-w-5xl mx-auto">
-            {!! typist($page->content)->mergeTagsMap(['name' => 'Adam', 'email' => 'awcodes1@gmail.com', 'phone' => '867-5309'])->toHtml() !!}
+        <main>
+            {!! typist($page->content)->mergeTagsMap(['name' => 'Adam', 'email' => 'test@example.com', 'phone' => '(912) 867-5309'])->toHtml() !!}
         </main>
 
         @livewireScripts

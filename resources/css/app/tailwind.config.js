@@ -12,6 +12,8 @@ export default {
     theme: {
         extend: {
             colors: {
+                primary: colors.sky,
+                gray: colors.slate,
                 info: colors.cyan,
                 success: colors.emerald,
                 warning: colors.yellow,

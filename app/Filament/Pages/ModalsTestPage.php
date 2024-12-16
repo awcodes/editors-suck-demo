@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Typist\Editors\MinimalEditor;
 use Awcodes\Typist\Support\Faker;
 use Awcodes\Typist\TypistEditor;
 use Filament\Forms\Components\Actions;
@@ -52,7 +53,7 @@ class ModalsTestPage extends Page
                         ->slideOver()
                         ->form([
                             TextInput::make('modal_text'),
-                            TypistEditor::make('modal_content')
+                            MinimalEditor::make('modal_content')
                         ])
                 ]),
                 TypistEditor::make('non_modal_content')

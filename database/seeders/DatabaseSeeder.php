@@ -53,6 +53,48 @@ class DatabaseSeeder extends Seeder
             'content' => null,
         ]);
 
+        Page::factory()->create([
+            'title' => 'Builder',
+            'slug' => 'builder',
+            'full_page' => true,
+            'content' => Faker::make()
+                ->block(
+                    identifier: 'Section',
+                    values: [
+                        'id' => null,
+                        'is_full_width' => false,
+                        'background_color' => 'white',
+                        'image_position' => null,
+                        'image_alignment' => null,
+                        'image_flush' => false,
+                        'image_rounded' => false,
+                        'image_shadow' => false,
+                        'text' => Faker::make()->heading(1)->paragraphs(4, true)->asJson(),
+                        'image' => null,
+                        'background_image' => null,
+                        'actions' => [],
+                        'actions_alignment' => null,
+                    ])
+                ->block(
+                    identifier: 'Section',
+                    values: [
+                        'id' => null,
+                        'is_full_width' => false,
+                        'background_color' => 'primary',
+                        'image_position' => null,
+                        'image_alignment' => null,
+                        'image_flush' => false,
+                        'image_rounded' => false,
+                        'image_shadow' => false,
+                        'text' => Faker::make()->heading(1)->paragraphs(4, true)->asJson(),
+                        'image' => null,
+                        'background_image' => null,
+                        'actions' => [],
+                        'actions_alignment' => null,
+                    ])
+                ->asJson(),
+        ]);
+
         Page::factory(10)->create();
     }
 }

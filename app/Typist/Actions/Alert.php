@@ -22,7 +22,12 @@ class Alert extends TypistAction
             ->icon(icon: 'heroicon-o-megaphone')
             ->iconButton()
             ->fillForm(function (array $arguments) {
-                return $arguments;
+                $defaults = [
+                    'color' => 'info',
+                    'dismissible' => false,
+                ];
+
+                return [...$defaults, ...$arguments];
             })
             ->form([
                 Components\Radio::make('color')

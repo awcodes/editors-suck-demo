@@ -25,11 +25,13 @@ class Batman extends TypistAction
             ->icon(icon: 'icon-batman')
             ->iconButton()
             ->fillForm(function (array $arguments) {
-                return [
-                    'name' => $arguments['name'] ?? 'Batman',
-                    'color' => $arguments['color'] ?? 'black',
-                    'side' => $arguments['side'] ?? 'hero'
+                $defaults = [
+                    'name' => 'Batman',
+                    'color' => 'black',
+                    'side' => 'hero'
                 ];
+ray($arguments);
+                return [...$defaults, ...$arguments];
             })
             ->form([
                 Components\Radio::make('name')
@@ -69,6 +71,8 @@ class Batman extends TypistAction
                     'view' => $this->getEditorView($data),
                     'coordinates' => $arguments['coordinates'] ?? null,
                 ]);
+
+                ray($arguments['coordinates']);
 
                 $component->getLivewire()->js(<<<JS
                     setTimeout(() => {

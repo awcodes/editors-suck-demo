@@ -53,7 +53,7 @@ class ModalsTestPage extends Page
                         ->slideOver()
                         ->form([
                             TextInput::make('modal_text'),
-                            MinimalEditor::make('modal_content')
+                            TypistEditor::make('modal_content')
                         ])
                 ]),
                 TypistEditor::make('non_modal_content')

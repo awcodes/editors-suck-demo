@@ -27,7 +27,11 @@ class Section extends TypistAction
             ->icon(icon: 'heroicon-o-cube')
             ->iconButton()
             ->fillForm(function (array $arguments) {
-                return $arguments;
+                $defaults = [
+                    'is_full_width' => false,
+                ];
+
+                return [...$defaults, ...$arguments];
             })
             ->slideOver()
             ->form(fn () => [
@@ -45,37 +49,32 @@ class Section extends TypistAction
                                     'start' => 'Start',
                                     'end' => 'End',
                                 ])
-                                ->grouped()
-                                ->default('start'),
+                                ->grouped(),
                             ToggleButtons::make('image_alignment')
                                 ->options([
                                     'top' => 'Top',
                                     'middle' => 'Middle',
                                     'bottom' => 'Bottom',
                                 ])
-                                ->grouped()
-                                ->default('top'),
+                                ->grouped(),
                             ToggleButtons::make('image_flush')
                                 ->options([
                                     false => 'No',
                                     true => 'Yes',
                                 ])
-                                ->grouped()
-                                ->default(false),
+                                ->grouped(),
                             ToggleButtons::make('image_rounded')
                                 ->options([
                                     false => 'No',
                                     true => 'Yes',
                                 ])
-                                ->grouped()
-                                ->default(false),
+                                ->grouped(),
                             ToggleButtons::make('image_shadow')
                                 ->options([
                                     false => 'No',
                                     true => 'Yes',
                                 ])
-                                ->grouped()
-                                ->default(false),
+                                ->grouped(),
                         ]),
                     ])
             ])

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Pages;
 
-use App\Typist\Editors\MinimalEditor;
-use Awcodes\Typist\Support\Faker;
-use Awcodes\Typist\TypistEditor;
+use App\Richie\Editors\MinimalEditor;
+use Awcodes\Richie\Support\Faker;
+use Awcodes\Richie\RichieEditor;
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\TextInput;
@@ -53,16 +53,16 @@ class ModalsTestPage extends Page
                         ->slideOver()
                         ->form([
                             TextInput::make('modal_text'),
-                            TypistEditor::make('modal_content')
+                            RichieEditor::make('modal_content')
                         ])
                 ]),
-                TypistEditor::make('non_modal_content')
+                RichieEditor::make('non_modal_content')
                     ->mergeTags([
                         'name',
                         'email',
                         'phone',
                     ]),
-//                TypistEditor::make('non_modal_content_two'),
+//                RichieEditor::make('non_modal_content_two'),
             ]);
     }
 

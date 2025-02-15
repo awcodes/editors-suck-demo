@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Page;
-use Awcodes\Typist\Support\Faker;
+use Awcodes\Richie\Support\Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

@@ -23,7 +23,7 @@
                 'py-12 prose dark:prose-invert max-w-5xl mx-auto' => ! $page->full_page,
             ])
         >
-            {!! typist($page->content)->mergeTagsMap(['name' => 'Adam', 'email' => 'test@example.com', 'phone' => '(912) 867-5309'])->toHtml() !!}
+            {!! richie($page->content)->mergeTagsMap(['name' => 'Adam', 'email' => 'test@example.com', 'phone' => '(912) 867-5309'])->toHtml() !!}
         </main>
 
         @livewireScripts

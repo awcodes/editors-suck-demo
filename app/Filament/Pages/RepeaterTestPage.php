@@ -2,7 +2,7 @@
 
 namespace App\Filament\Pages;
 
-use Awcodes\Typist\TypistEditor;
+use Awcodes\Richie\RichieEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
@@ -37,7 +37,7 @@ class RepeaterTestPage extends Page
                 Repeater::make('repeater_test')
                     ->reorderableWithButtons()
                     ->schema([
-                        TypistEditor::make('content')
+                        RichieEditor::make('content')
                             ->label(fn ($component) => $component->getStatePath()),
 //                        RichEditor::make('rich_editor'),
 //                        MarkdownEditor::make('markdown_editor'),

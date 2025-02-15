@@ -5,8 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
 use App\Models\User;
-use App\Typist\Editors\MinimalEditor;
-use Awcodes\Typist\TypistEditor;
+use App\Richie\Editors\MinimalEditor;
+use Awcodes\Richie\RichieEditor;
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\TextInput;
@@ -38,12 +38,12 @@ class PageResource extends Resource
                 TextInput::make('slug'),
                 Actions::make([
                     Action::make('test_update_content')
-                        ->action(fn(Set $set) => $set('content', typist('<p>updated content from $set</p>')->toJson()))
+                        ->action(fn(Set $set) => $set('content', richie('<p>updated content from $set</p>')->toJson()))
                 ]),
                 MinimalEditor::make('minimal')
                     ->dehydrated(false)
                     ->columnSpanFull(),
-                TypistEditor::make('content')
+                RichieEditor::make('content')
                     ->columnSpanFull()
                     ->placeholder('Write something awesome...')
                     ->mentions(User::all()->pluck('name')->toArray()),

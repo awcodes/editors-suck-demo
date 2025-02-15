@@ -6,7 +6,7 @@ export default {
     darkMode: 'class',
     content: [
         './resources/views/**/*.blade.php',
-        './vendor/awcodes/typist/resources/views/**/*.blade.php',
+        './vendor/awcodes/richie/resources/views/**/*.blade.php',
         './vendor/awcodes/dimmer/resources/views/**/*.blade.php',
     ],
     theme: {

@@ -1,7 +1,7 @@
 {
-    "name": "awcodes/typist-demo",
+    "name": "awcodes/richie-demo",
     "type": "project",
-    "description": "Demo and testing app for Typist Filament Plugin",
+    "description": "Demo and testing app for Richie Filament Plugin",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
@@ -9,7 +9,7 @@
         "awcodes/dimmer": "^1.1",
         "awcodes/filament-curator": "^3.6",
         "awcodes/palette": "^1.0",
-        "awcodes/typist": "*",
+        "awcodes/richie": "*",
         "filament/filament": "^3.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9"
@@ -28,7 +28,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../typist"
+            "url": "../richie"
         }
     ],
     "autoload": {

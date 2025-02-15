@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\PageResource\Pages;
 
 use App\Filament\Resources\PageResource;
-use Awcodes\Typist\TypistEntry;
+use Awcodes\Richie\RichieEntry;
 use Filament\Actions;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
@@ -26,7 +26,7 @@ class ViewPage extends ViewRecord
         return $infolist
             ->schema([
                 TextEntry::make('title'),
-                TypistEntry::make('content')
+                RichieEntry::make('content')
                     ->label('Content')
                     ->mergeTagsMap(['name' => 'Adam', 'email' => 'test@example.com', 'phone' => '(912) 867-5309'])
                     ->columnSpanFull(),

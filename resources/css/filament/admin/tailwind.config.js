@@ -7,10 +7,10 @@ export default {
         './app/Forms/**/*.php',
         './resources/views/filament/**/*.blade.php',
         './resources/views/forms/**/*.blade.php',
-        './resources/views/typist/**/*.blade.php',
+        './resources/views/richie/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
         './vendor/awcodes/filament-curator/resources/**/*.blade.php',
-        './vendor/awcodes/typist/resources/views/**/*.blade.php',
+        './vendor/awcodes/richie/resources/views/**/*.blade.php',
         './vendor/awcodes/palette/resources/views/**/*.blade.php',
     ],
 }

@@ -2,8 +2,8 @@
 
 namespace App\Filament\Pages;
 
-use Awcodes\Typist\Support\Faker;
-use Awcodes\Typist\TypistEditor;
+use Awcodes\Richie\Support\Faker;
+use Awcodes\Richie\RichieEditor;
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\TextInput;
@@ -33,7 +33,7 @@ class BuilderTestPage extends Page
                     ->blocks([
                         Builder\Block::make('builder_test_block')
                             ->schema([
-                                TypistEditor::make('content'),
+                                RichieEditor::make('content'),
                             ])
                     ])
             ]);

@@ -4,9 +4,9 @@ namespace App\Providers\Filament;
 
 use App\Filament\Auth\Login;
 use Awcodes\Curator\CuratorPlugin;
-use Awcodes\Typist\Facades\Typist;
-use Awcodes\Typist\Support\ToolbarGroup;
-use Awcodes\Typist\TypistEditor;
+use Awcodes\Richie\Facades\Richie;
+use Awcodes\Richie\Support\ToolbarGroup;
+use Awcodes\Richie\RichieEditor;
 use Exception;
 use Filament\FontProviders\LocalFontProvider;
 use Filament\Http\Middleware\Authenticate;

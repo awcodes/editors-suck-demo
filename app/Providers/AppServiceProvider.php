@@ -4,9 +4,9 @@ namespace App\Providers;
 
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Models\Media;
-use Awcodes\Typist\Facades\Typist;
-use Awcodes\Typist\Support\ToolbarGroup;
-use Awcodes\Typist\TypistEditor;
+use Awcodes\Richie\Facades\Richie;
+use Awcodes\Richie\Support\ToolbarGroup;
+use Awcodes\Richie\RichieEditor;
 use Filament\Forms\Set;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -20,12 +20,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        Typist::registerActionPath(
-            in: app_path('Typist/Actions'),
-            for: 'App\\Typist\\Actions',
+        Richie::registerActionPath(
+            in: app_path('Richie/Actions'),
+            for: 'App\\Richie\\Actions',
         );
 
-        TypistEditor::configureUsing(function (TypistEditor $component) {
+        RichieEditor::configureUsing(function (RichieEditor $component) {
             $component
                 ->mergeTags([
                     'name', 'email', 'phone'
@@ -65,18 +65,18 @@ class AppServiceProvider extends ServiceProvider
                 )
                 ->toolbar([
                     ToolbarGroup::make([
-                        \App\Typist\Actions\Alert::make('Alert'),
-                        \App\Typist\Actions\Batman::make('Batman'),
-                        \App\Typist\Actions\Section::make('Section'),
+                        \App\Richie\Actions\Alert::make('Alert'),
+                        \App\Richie\Actions\Batman::make('Batman'),
+                        \App\Richie\Actions\Section::make('Section'),
                     ])->label('Blocks'),
                 ])
                 ->suggestions([
-                    \App\Typist\Actions\Batman::make('Batman'),
+                    \App\Richie\Actions\Batman::make('Batman'),
                 ])
                 ->sidebar([
-                    \App\Typist\Actions\Alert::make('Alert'),
-                    \App\Typist\Actions\Batman::make('Batman'),
-                    \App\Typist\Actions\Section::make('Section'),
+                    \App\Richie\Actions\Alert::make('Alert'),
+                    \App\Richie\Actions\Batman::make('Batman'),
+                    \App\Richie\Actions\Section::make('Section'),
                 ]);
         });
     }

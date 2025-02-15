@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Page;
 use App\Models\User;
-use Awcodes\Typist\Support\Faker;
+use Awcodes\Richie\Support\Faker;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;

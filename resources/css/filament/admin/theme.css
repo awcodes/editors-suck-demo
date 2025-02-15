@@ -1,12 +1,12 @@
 @import '/vendor/filament/filament/resources/css/theme.css';
 @import '/node_modules/cropperjs/dist/cropper.css';
 @import '/vendor/awcodes/filament-curator/resources/css/plugin.css';
-@import '/vendor/awcodes/typist/resources/dist/typist.css';
+@import '/vendor/awcodes/richie/resources/dist/richie.css';
 
 @config 'tailwind.config.js';
 
-.typist-editor,
-.typist-entry {
+.richie-editor,
+.richie-entry {
     --primary-50: 240, 249, 255;
     --primary-100: 224, 242, 254;
     --primary-200: 186, 230, 253;

@@ -43,8 +43,8 @@ class AppServiceProvider extends ServiceProvider
                         ->afterStateUpdated(function ($state, Set $set) {
                             $media = Arr::first($state);
 
-                            $set('alt', $media['alt']);
-                            $set('title', $media['title']);
+                            $set('alt', $media['alt'] ?? '');
+                            $set('title', $media['title'] ?? null);
 
                             if (Str::contains($media['type'], 'image')) {
                                 $set('type', 'image');

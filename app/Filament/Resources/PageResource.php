@@ -9,6 +9,7 @@ use App\Richie\Editors\MinimalEditor;
 use Awcodes\Richie\RichieEditor;
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
@@ -43,6 +44,11 @@ class PageResource extends Resource
                 MinimalEditor::make('minimal')
                     ->dehydrated(false)
                     ->columnSpanFull(),
+                Select::make('whatever')
+                    ->label('Select a user')
+                    ->native(false)
+                    ->dehydrated(false)
+                    ->options(['1' => 'User One', '2' => 'User Two', '3' => 'User Three']),
                 RichieEditor::make('content')
                     ->columnSpanFull()
                     ->placeholder('Write something awesome...')

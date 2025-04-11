@@ -3,9 +3,9 @@
 namespace App\Richie\Actions;
 
 use Awcodes\Palette\Forms\Components\ColorPicker;
-use Awcodes\PresetColorPicker\PresetColorPicker;
 use Awcodes\Richie\RichieAction;
 use Awcodes\Richie\RichieEditor;
+use Awcodes\Richie\Support\EditorCommand;
 use Exception;
 use Filament\Forms\Components;
 use Filament\Support\Colors\Color;
@@ -24,13 +24,16 @@ class Batman extends RichieAction
             ->label('Batman')
             ->icon(icon: 'icon-batman')
             ->iconButton()
+            ->active(name: 'richieBlock', attributes: ['identifier' => $this->getName()])
+            ->editorView(view: 'richie.actions.batman')
+            ->renderView(view: 'richie.actions.batman')
             ->fillForm(function (array $arguments) {
                 $defaults = [
                     'name' => 'Batman',
                     'color' => 'black',
                     'side' => 'hero'
                 ];
-ray($arguments);
+
                 return [...$defaults, ...$arguments];
             })
             ->form([
@@ -63,28 +66,19 @@ ray($arguments);
                     ->inlineLabel(false),
             ])
             ->action(function (RichieEditor $component, array $arguments, array $data): void {
-                $statePath = $component->getStatePath();
-
-                $data = Js::from([
-                    'identifier' => $this->getName(),
-                    'values' => $data,
-                    'view' => $this->getEditorView($data),
-                    'coordinates' => $arguments['coordinates'] ?? null,
-                ]);
-
-                ray($arguments['coordinates']);
-
-                $component->getLivewire()->js(<<<JS
-                    setTimeout(() => {
-                        window.editors['$statePath'].chain().focus().insertBlock($data).run()
-                    }, 0)
-                JS);
-            })
-            ->after(function (RichieEditor $component): void {
-                $component->getLivewire()->dispatch('focus-editor', statePath: $component->getStatePath());
-            })
-            ->active(name: 'richieBlock', attributes: ['identifier' => $this->getName()])
-            ->editorView(view: 'richie.actions.batman')
-            ->renderView(view: 'richie.actions.batman');
+                $component->runCommands(
+                    [
+                        new EditorCommand(
+                            name: 'insertBlock',
+                            arguments: [[
+                                'identifier' => 'Batman',
+                                'values' => $data,
+                                'view' => $this->getEditorView($data),
+                            ]],
+                        ),
+                    ],
+                    editorSelection: $arguments['editorSelection'],
+                );
+            });
     }
 }

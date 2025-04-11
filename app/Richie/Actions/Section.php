@@ -7,6 +7,7 @@ use App\Richie\Forms\Schema;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Richie\RichieAction;
 use Awcodes\Richie\RichieEditor;
+use Awcodes\Richie\Support\EditorCommand;
 use Exception;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section as FilamentSection;
@@ -26,6 +27,10 @@ class Section extends RichieAction
             ->label('Section')
             ->icon(icon: 'heroicon-o-cube')
             ->iconButton()
+            ->slideOver()
+            ->active(name: 'richieBlock', attributes: ['identifier' => $this->getName()])
+            ->editorView(view: 'richie.actions.section')
+            ->renderView(view: 'richie.actions.section')
             ->fillForm(function (array $arguments) {
                 $defaults = [
                     'is_full_width' => false,
@@ -33,7 +38,6 @@ class Section extends RichieAction
 
                 return [...$defaults, ...$arguments];
             })
-            ->slideOver()
             ->form(fn () => [
                 ...Schema::getCommonBlockSettings(),
                 MinimalEditor::make('text'),
@@ -79,26 +83,19 @@ class Section extends RichieAction
                     ])
             ])
             ->action(function (RichieEditor $component, array $arguments, array $data): void {
-                $statePath = $component->getStatePath();
-
-                $data = Js::from([
-                    'identifier' => $this->getName(),
-                    'values' => $data,
-                    'view' => $this->getEditorView($data),
-                    'coordinates' => $arguments['coordinates'] ?? null,
-                ]);
-
-                $component->getLivewire()->js(<<<JS
-                    setTimeout(() => {
-                        window.editors['$statePath'].chain().focus().insertBlock($data).run()
-                    }, 0)
-                JS);
-            })
-            ->after(function (RichieEditor $component): void {
-                $component->getLivewire()->dispatch('focus-editor', statePath: $component->getStatePath());
-            })
-            ->active(name: 'richieBlock', attributes: ['identifier' => $this->getName()])
-            ->editorView(view: 'richie.actions.section')
-            ->renderView(view: 'richie.actions.section');
+                $component->runCommands(
+                    [
+                        new EditorCommand(
+                            name: 'insertBlock',
+                            arguments: [[
+                                'identifier' => 'Section',
+                                'values' => $data,
+                                'view' => $this->getEditorView($data),
+                            ]],
+                        ),
+                    ],
+                    editorSelection: $arguments['editorSelection'],
+                );
+            });
     }
 }

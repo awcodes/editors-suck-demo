@@ -4,6 +4,7 @@ namespace App\Richie\Actions;
 
 use Awcodes\Richie\RichieAction;
 use Awcodes\Richie\RichieEditor;
+use Awcodes\Richie\Support\EditorCommand;
 use Exception;
 use Filament\Forms\Components;
 use Illuminate\Support\Js;
@@ -21,6 +22,9 @@ class Alert extends RichieAction
             ->label('Alert')
             ->icon(icon: 'heroicon-o-megaphone')
             ->iconButton()
+            ->active(name: 'richieBlock', attributes: ['identifier' => $this->getName()])
+            ->editorView(view: 'richie.actions.alert')
+            ->renderView(view: 'richie.actions.alert')
             ->fillForm(function (array $arguments) {
                 $defaults = [
                     'color' => 'info',
@@ -48,26 +52,19 @@ class Alert extends RichieAction
                 Components\Textarea::make('message'),
             ])
             ->action(function (RichieEditor $component, array $arguments, array $data): void {
-                $statePath = $component->getStatePath();
-
-                $data = Js::from([
-                    'identifier' => $this->getName(),
-                    'values' => $data,
-                    'view' => $this->getEditorView($data),
-                    'coordinates' => $arguments['coordinates'] ?? null,
-                ]);
-
-                $component->getLivewire()->js(<<<JS
-                    setTimeout(() => {
-                        window.editors['$statePath'].chain().focus().insertBlock($data).run()
-                    }, 0)
-                JS);
-            })
-            ->after(function (RichieEditor $component): void {
-                $component->getLivewire()->dispatch('focus-editor', statePath: $component->getStatePath());
-            })
-            ->active(name: 'richieBlock', attributes: ['identifier' => $this->getName()])
-            ->editorView(view: 'richie.actions.alert')
-            ->renderView(view: 'richie.actions.alert');
+                $component->runCommands(
+                    [
+                        new EditorCommand(
+                            name: 'insertBlock',
+                            arguments: [[
+                                'identifier' => 'Alert',
+                                'values' => $data,
+                                'view' => $this->getEditorView($data),
+                            ]],
+                        ),
+                    ],
+                    editorSelection: $arguments['editorSelection'],
+                );
+            });
     }
 }
